@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h4>Add a Comment</h4>
+    </div>
+    <div class="card-body">
+      <%= form_with model: [article, article.comments.build], local: true do |form| %>
+        <% if current_user %>
+          <%= form.hidden_field :commenter, value: current_user.email %>
+
+          <div class="mb-3">
+            <%= form.label :body, class: "form-label" %>
+            <%= form.text_area :body, rows: 5, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :status, class: 'form-label' %>
+            <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+          </div>
+
+          <div class="text-center">
+            <%= form.submit "Post Comment", class: "btn btn-outline-success" %>
+          </div>
+        <% else %>
+          <p class="text-muted">You must <%= link_to 'Log In', new_session_path %> or <%= link_to 'Sign Up', new_user_path %> to comment on the article</p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

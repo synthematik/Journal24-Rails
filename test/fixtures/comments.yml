@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  commenter: Name One
+  body: Bodycom One
+  article: Article One
+
+two:
+  commenter: Name Two
+  body: Bodycom Two
+  article: Article Two

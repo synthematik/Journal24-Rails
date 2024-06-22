@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h3 style="margin-left: 35%">Write an article</h3>
+        </div>
+        <div class="card-body">
+          <%= form_with model: article, local: true, data: {html_safe: true}, class: "form" do |form| %>
+            <div class="mb-3">
+              <%= form.label :title, class: "form-label" %>
+              <%= form.text_field :title, class: "form-control" %>
+              <% article.errors.full_messages_for(:title).each do |message| %>
+                <div class="text-danger"><%= message %></div>
+              <% end %>
+            </div>
+
+            <div class="mb-3">
+              <%= form.label :body, class: "form-label" %>
+              <%= form.text_area :body, rows: 10, class: "form-control", id: "article_body" %>
+              <% article.errors.full_messages_for(:body).each do |message| %>
+                <div class="text-danger"><%= message %></div>
+              <% end %>
+            </div>
+
+            <div class="mb-3">
+              <%= form.label :status, class: "form-label" %>
+              <%= form.select :status, options_for_select(['public', 'private', 'archived'], 'public'), {}, class: "form-select" %>
+            </div>
+            <div class="mb-3 text-center">
+              <%= form.submit "Save", class: "btn btn-outline-success" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

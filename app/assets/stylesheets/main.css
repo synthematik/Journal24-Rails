@@ -1,0 +1,106 @@
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    text-shadow:
+            1px 1px 0 #f8f8f8,
+            1px -1px 0 greenyellow;
+}
+
+.navbar-gradient {
+    background: linear-gradient(90deg, green, white, lightgreen);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.site-name {
+    background: linear-gradient(90deg, green, white, lawngreen);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card-title a {
+    color: black;
+    text-decoration: none;
+}
+
+.card-title a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.article-card {
+    max-width: 800px;
+    margin-left: 20%;
+    margin-right: -10%;
+}
+
+.popular-articles {
+    max-width: 300px;
+    margin-left: 20%;
+    margin-right: auto;
+}
+
+@media (max-width: 991.98px) {
+    .col-lg-4 {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+}
+
+.card-body h4,
+.card-body h5 {
+    font-weight: bold;
+}
+
+.card-body p {
+    color: #6c757d;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.form-container {
+    margin-top: 2rem;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.text-danger {
+    color: #dc3545;
+}
+
+.comment {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}

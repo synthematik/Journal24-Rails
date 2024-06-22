@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-3 mb-4">
+      <div class="card"  style="margin-top: 14%">
+        <div class="card-body text-center">
+          <h4><%= @user.email %></h4>
+          <p>Joined <%= @user.created_at.strftime("%d %B %Y") %></p>
+          <% if @user.id == @current_user&.id %>
+            <div class="mb-3">
+              <%= link_to 'Edit a profile', edit_user_path(@user), class: "btn btn-outline-success" %>
+            </div>
+            <div class="mb-3">
+              <%= button_to "Delete a profile", user_path(@user),
+                            method: :delete,
+                            form: {data: { turbo_confirm: "Are you sure you want to delete the profile?"}},
+                            class: 'btn btn-outline-danger'%>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <h2 class="mb-4" style="margin-left: 40%; margin-top: -2%">Articles</h2>
+      <% %>
+      <% @articles.each do |article| %>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5><%= link_to article.title.html_safe, article_path(article), class: 'card-title', style: 'text-decoration: none;'%></h5>
+            <p><%= truncate(article.body.html_safe, length: 300) %></p>
+            <%= link_to 'Read more →', article_path(article), class: 'btn btn-outline-success' %>
+          </div>
+          <div class="card-footer text-muted">
+            Posted <%= time_ago_in_words(article.created_at) %> ago
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

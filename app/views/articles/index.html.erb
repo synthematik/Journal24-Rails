@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-7 col-md-12">
+      <% @articles.each do |article| %>
+        <div class="card mb-4 article-card">
+            <p style="margin-bottom: -0.5%">Author: <%= article.user.email.split("@")[0] %> </p>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to article.title.html_safe, article_path(article) %></h5>
+            <p class="card-text"><%= truncate(article.body.html_safe, length: 500).html_safe %></p>
+            <%= link_to 'Read more →', article_path(article), class: 'btn btn-outline-success' %>
+          </div>
+          <div class="card-footer text-muted">
+            Posted <%= time_ago_in_words(article.created_at) %> ago
+          </div>
+        </div>
+      <div class="d-flex justify-content-center" style="margin-bottom: 7%; margin-left: 25%; margin-top: 7%">
+        <%= pagy_nav(@pagy).html_safe %>
+      </div>
+    </div>
+      <% end %>
+
+    <div class="col-lg-4 col-md-12 offset-lg-1">
+      <div class="card popular-articles">
+        <div class="card-body">
+          <h3 class="card-title">Popular</h3>
+          <ul class="list-group">
+            <% @popular_articles.each do |article| %>
+              <li class="list-group-item">
+                <small><%= link_to article.user.email.split("@")[0], user_path(article.user.id), class: "card-title", style: 'text-decoration: none;' %></small> <small style="margin-left: 10%;"><%= time_ago_in_words(article.created_at) %> ago</small>
+                <h6 class="my-0 card-title"><%= link_to article.title.html_safe, article_path(article)%></h6>
+                <%= link_to 'Read more →', article_path(article), class: 'btn btn-outline-success', style: 'width: 200px; margin-top: 10px;' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
